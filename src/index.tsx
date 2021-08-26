@@ -9,6 +9,10 @@ interface Props extends React.DetailedHTMLProps<React.HTMLAttributes<HTMLDivElem
   center?: boolean
 }
 
+interface FilteredProps {
+  children?: any
+}
+
 export const Div = (props: Props) => {
   const styles: React.CSSProperties = { ...props.style }
 
@@ -26,9 +30,18 @@ export const Div = (props: Props) => {
     styles.justifyContent = 'center'
   }
 
+  const disallowed = ['flex', 'wrap', 'row', 'column', 'center']
+
+  const filteredProps: FilteredProps = Object.keys(props)
+    .filter((key) => !disallowed.includes(key))
+    .reduce((obj, key) => {
+      obj[key] = props[key]
+      return obj
+    }, {})
+
   return (
-    <div {...props} style={styles}>
-      {props.children}
+    <div {...filteredProps} style={styles}>
+      {filteredProps.children}
     </div>
   )
 }
