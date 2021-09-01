@@ -7,28 +7,41 @@ interface Props extends React.DetailedHTMLProps<React.HTMLAttributes<HTMLDivElem
   row?: boolean
   wrap?: boolean
   center?: boolean
+  children: React.ReactNode
 }
 
 export const Div = (props: Props) => {
-  const styles: React.CSSProperties = { ...props.style }
+  const {
+    flex,
+    column,
+    reverse,
+    row,
+    wrap,
+    center,
+    children,
+    style,
+    ...rest
+  } = props
 
-  if (props.flex) styles.flex = props.flex
-  if (props.wrap) styles.flexWrap = 'wrap'
-  if (props.row || props.column) {
+  const styles: React.CSSProperties = { ...style }
+
+  if (flex) styles.flex = flex
+  if (wrap) styles.flexWrap = 'wrap'
+  if (row || column) {
     styles.display = 'flex'
-    styles.flexDirection = props.row
-      ? (props.reverse ? 'row-reverse' : 'row')
-      : (props.reverse ? 'column-reverse' : 'column')
+    styles.flexDirection = row
+      ? (reverse ? 'row-reverse' : 'row')
+      : (reverse ? 'column-reverse' : 'column')
   }
 
-  if (props.center) {
+  if (center) {
     styles.alignItems = 'center'
     styles.justifyContent = 'center'
   }
 
   return (
-    <div {...props} style={styles}>
-      {props.children}
+    <div {...rest} style={styles}>
+      {children}
     </div>
   )
 }
