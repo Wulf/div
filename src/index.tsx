@@ -10,19 +10,17 @@ interface Props extends React.DetailedHTMLProps<React.HTMLAttributes<HTMLDivElem
   children: React.ReactNode
 }
 
-export const Div = (props: Props) => {
-  const {
-    flex,
-    column,
-    reverse,
-    row,
-    wrap,
-    center,
-    children,
-    style,
-    ...rest
-  } = props
-
+export const Div = ({
+  flex,
+  column,
+  reverse,
+  row,
+  wrap,
+  center,
+  children,
+  style,
+  ...rest
+}: Props) => {
   const styles: React.CSSProperties = { ...style }
 
   if (flex) styles.flex = flex
