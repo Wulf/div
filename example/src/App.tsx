@@ -6,10 +6,12 @@ const App = () => {
   return (
     <Div column>
       <Div row>
-        <a href="https://github.com/wulf/div"><h1>div</h1></a>
+        <a href='https://github.com/wulf/div'>
+          <h1>div</h1>
+        </a>
       </Div>
       <Div row>
-        <Div column flex={1} style={{backgroundColor: 'cadetblue', color: 'papayawhip'}}>
+        <Div column flex={1} style={{ backgroundColor: 'cadetblue', color: 'papayawhip' }}>
           A third of the space!
         </Div>
 
@@ -17,10 +19,11 @@ const App = () => {
           This one has centered content!
         </Div>
 
-        <Div column flex={2} style={{backgroundColor: 'royalblue', color: 'palevioletred'}}>
+        <Div column flex={2} style={{ backgroundColor: 'royalblue', color: 'palevioletred' }}>
           Two thirds of space!
         </Div>
       </Div>
+      <Div />
     </Div>
   )
 }

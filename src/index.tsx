@@ -7,7 +7,7 @@ interface Props extends React.DetailedHTMLProps<React.HTMLAttributes<HTMLDivElem
   row?: boolean
   wrap?: boolean
   center?: boolean
-  children: React.ReactNode
+  children?: React.ReactNode
 }
 
 export const Div = ({
